@@ -74,3 +74,42 @@ needleInfo =  {'token':'9cc00e459ebfd732c67ed213ddc614d1',
 url2 = "http://challenge.code2040.org/api/haystack/validate"
 
 r = requests.post( url2, data=needleInfo)
+
+
+
+#STEP 4: Prefix
+getDictionary=  {'token':'9cc00e459ebfd732c67ed213ddc614d1'}
+
+url = "http://challenge.code2040.org/api/prefix"
+
+r = requests.post( url, data=getDictionary)
+
+theDic = r.content
+
+s = json.loads(theDic)
+
+prefix = s['prefix']
+
+ogArray = s['array']
+
+print 'the prefix is: %s' % (prefix)
+print 'the array is: %s' % (ogArray)
+
+newArray = list()
+
+for index in range(len(ogArray)):
+    tempLen = len(ogArray[index])
+    tempStr = ogArray[index]
+
+    if not tempStr.startswith(prefix, 0, tempLen):
+        newArray.append(tempStr)
+
+print 'the new array is: %s' % (newArray)
+
+
+arrayInfo =  {'token':'9cc00e459ebfd732c67ed213ddc614d1',
+               'array': newArray}
+
+url2 = "http://challenge.code2040.org/api/prefix/validate"
+
+r = requests.post( url2, data=arrayInfo)
