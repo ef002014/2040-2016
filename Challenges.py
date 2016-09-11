@@ -4,6 +4,7 @@ import requests
 
 
 # STEP 1: INTRODUCTION
+# Connect to the registration endpoint
 passIn =  {'token':'9cc00e459ebfd732c67ed213ddc614d1',
              'github':'https://github.com/ef002014/2040-2016'}
 
@@ -16,6 +17,7 @@ print r.text
 
 
 #STEP 2: REVERSE A STRING
+# Reverse the given string
 getString =  {'token':'9cc00e459ebfd732c67ed213ddc614d1'}
 
 url = "http://challenge.code2040.org/api/reverse"
@@ -28,6 +30,8 @@ print newStr
 
 swapStr = ""
 
+#loop through string from back to front and 
+#add each individual character to the empty string
 for index in reversed(range((len(newStr)))):
     swapStr = swapStr + newStr[index]
 
@@ -60,6 +64,8 @@ haystack = s['haystack']
 
 needleSpot = -1
 
+# loop through each string in the hastack and compare
+# the string with the needle
 for index in range(len(haystack)):
     if needle == haystack[index]:
         needleSpot = index
@@ -97,6 +103,10 @@ print 'the array is: %s' % (ogArray)
 
 newArray = list()
 
+# loop through each string in the hastack and compare
+# prefix with string
+# if prefix is not at the beginning of the string
+# add it to the new string
 for index in range(len(ogArray)):
     tempLen = len(ogArray[index])
     tempStr = ogArray[index]
