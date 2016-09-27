@@ -123,3 +123,49 @@ arrayInfo =  {'token':'9cc00e459ebfd732c67ed213ddc614d1',
 url2 = "http://challenge.code2040.org/api/prefix/validate"
 
 r = requests.post( url2, data=arrayInfo)
+
+
+
+#STEP 5: The Dating Game
+getStamp=  {'token':'9cc00e459ebfd732c67ed213ddc614d1'}
+
+url = "http://challenge.code2040.org/api/dating"
+
+r = requests.post( url, data=getStamp)
+
+theStamp = r.content
+
+theDic = json.loads(theStamp)
+
+print theDic
+
+#the date stamp
+theDate = theDic["datestamp"]
+
+
+#the int that represents seconds
+theIntvl = theDic["interval"]
+
+print theDate
+
+print theIntvl
+
+#intermediate date (not quite the datestamp yet)
+rightDate = iso8601.parse_date(theDate) + timedelta(seconds=theIntvl)
+
+print rightDate
+
+#the final appended date stamp
+finalDate = rightDate.isoformat()
+
+print finalDate
+
+dateInfo =  {'token':'9cc00e459ebfd732c67ed213ddc614d1',
+               'datestamp': finalDate }
+
+url2 = "http://challenge.code2040.org/api/dating/validate"
+
+r = requests.post( url2, data=dateInfo)
+
+print r.text
+
