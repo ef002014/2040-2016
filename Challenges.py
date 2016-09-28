@@ -145,7 +145,6 @@ print theDic
 #the date stamp
 theDate = theDic["datestamp"]
 
-
 #the int that represents seconds
 theIntvl = theDic["interval"]
 
@@ -158,14 +157,13 @@ rightDate = iso8601.parse_date(theDate) + timedelta(seconds=theIntvl)
 
 print rightDate
 
-
 #the final appended date stamp
 finalDate = rightDate.isoformat()
 
 print finalDate
 
 #the date stamp with the time zone deleted
-rDate = finalDate[:19]
+rDate = finalDate[:19] + "Z"
 
 print rDate
 
