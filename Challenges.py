@@ -158,17 +158,22 @@ rightDate = iso8601.parse_date(theDate) + timedelta(seconds=theIntvl)
 
 print rightDate
 
+
 #the final appended date stamp
 finalDate = rightDate.isoformat()
 
 print finalDate
 
+#the date stamp with the time zone deleted
+rDate = finalDate[:19]
+
+print rDate
+
 dateInfo =  {'token':'9cc00e459ebfd732c67ed213ddc614d1',
-               'datestamp': finalDate }
+               'datestamp': rDate }
 
 url2 = "http://challenge.code2040.org/api/dating/validate"
 
 r = requests.post( url2, data=dateInfo)
 
 print r.text
-
