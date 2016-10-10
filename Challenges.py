@@ -125,7 +125,7 @@ arrayInfo =  {'token':'9cc00e459ebfd732c67ed213ddc614d1',
 
 url2 = "http://challenge.code2040.org/api/prefix/validate"
 
-r = requests.post( url2, data=arrayInfo)
+r = requests.post( url2, json=arrayInfo)
 
 
 
